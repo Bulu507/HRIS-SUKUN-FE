@@ -26,6 +26,7 @@ import Letters from '../views/Utilities/Letters.vue'
 import JobSeekerProfile from '../views/Recruitment/JobSeekerProfile.vue'
 import OpenRecruitment from '../views/Recruitment/OpenRecruitment.vue'
 import ScheduleRecruitment from '../views/Recruitment/ScheduleRecruitment.vue'
+import ScheduleDetail from '../views/Recruitment/ScheduleRecruitmentDetail.vue'
 import SelectionResult from '../views/Recruitment/SelectionResult.vue'
 
 import DailyAttendance from '../views/TimeAttendance/DailyAttendance.vue'
@@ -156,7 +157,12 @@ const routes = [
     name: 'ScheduleRecruitment',
     component: ScheduleRecruitment
   },
-
+  {
+    path: '/ScheduleDetail',
+    name: 'ScheduleDetail',
+    component: ScheduleDetail
+  },
+  
   {
     path: '/SelectionResult',
     name: 'SelectionResult',
