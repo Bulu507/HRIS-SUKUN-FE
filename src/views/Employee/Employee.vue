@@ -44,9 +44,7 @@
             hide-details
           ></v-text-field>
           <v-divider class="mx-2 d-none d-md-block" inset vertical></v-divider>
-          <v-btn dark class="mb-2" 
-          @click="addEmp()" 
-          color="#25695c">
+          <v-btn dark class="mb-2" @click="addEmp()" color="#25695c">
             <v-icon small>mdi-plus</v-icon> Add Item
           </v-btn>
 
@@ -62,8 +60,8 @@
               </v-card-title>
               <v-card-text class="fontall pb-1">
                 <v-form ref="form" v-model="valid" lazy-validation>
-                  <v-container fluid>                   
-                    <v-row class="mb-3 mt-0 ml-0">
+                  <v-container fluid>
+                    <!-- <v-row class="mb-3 mt-0 ml-0">
                       <h4>Unit Perusahaan</h4>
                       <v-divider class="mx-2 mt-3"></v-divider>
                     </v-row>
@@ -80,7 +78,7 @@
                           dense
                         ></v-select>
                       </v-col>
-                    </v-row>
+                    </v-row> -->
                     <v-row class="mb-3 mt-2 ml-0">
                       <h4>Divisi & Department</h4>
                       <v-divider class="mx-2 mt-3"></v-divider>
@@ -152,7 +150,7 @@
               <v-card-title class="headline"
                 >Are you sure you want to delete this item?</v-card-title
               >
-              <v-card-text>                   
+              <v-card-text>
                 <v-row class="mb-5 mt-5 ml-0 px-2">
                   <h4>Detail Data</h4>
                   <v-divider class="mx-2 mt-3"></v-divider>
@@ -176,7 +174,7 @@
                       dense
                     ></v-text-field>
                   </v-col>
-                </v-row>                   
+                </v-row>
                 <v-row class="mb-5 mt-2 ml-0 px-2">
                   <v-divider class="mx-2 mt-2"></v-divider>
                 </v-row>
@@ -271,9 +269,10 @@ export default {
     headers: [
       { text: "NIK", value: "no_induk_karyawan" },
       { text: "Nama Employee", value: "nama_lengkap" },
-      { text: "Unit Perusahaan", value: "unit_perusahan_nama" },
+      // { text: "Unit Perusahaan", value: "unit_perusahan_nama" },
       { text: "Divisi", value: "divisi_nama" },
       { text: "Department", value: "dept_nama" },
+      { text: "Jabatan", value: "jabatan" },
       { text: "Status Karyawan", value: "status_karyawan_nama" },
       //   { text: "Pangkat", value: "pangkat" },
       //   { text: "User ID", value: "username" },
@@ -286,8 +285,8 @@ export default {
       nama: "",
     },
 
-    deleteDetailItem:{
-      id:"",
+    deleteDetailItem: {
+      id: "",
       no_induk_karyawan: "",
       nama_lengkap: "",
     },
@@ -301,11 +300,11 @@ export default {
       { text: "Tidak_Aktif", value: 1 },
     ],
 
-    selectDivisi:"",
-    selectDepartment:"",
-    selectStatusKaryawan:"",
-    selectDepartment:"",
-    selectUnitPerusahaan:"",
+    selectDivisi: "",
+    selectDepartment: "",
+    selectStatusKaryawan: "",
+    selectDepartment: "",
+    selectUnitPerusahaan: "",
     AddModal: true,
     valid: true,
 
@@ -330,26 +329,43 @@ export default {
     this.getUnitPerusahaan();
     this.getStatusKaryawan();
   },
-  setup(){
-  },
+  setup() {},
 
   methods: {
     async initialize(divisi, dept, statuskaryawan, unit_perusahaan) {
-      var div_code = ""
-      if(divisi){div_code=divisi;}
-      var dept_code = ""
-      if(dept){dept_code=dept;}
-      var status_karyawan = ""
-      if(statuskaryawan){status_karyawan=statuskaryawan;}
-      var unit_perusahaan_code = ""
-      if(unit_perusahaan){unit_perusahaan_code=unit_perusahaan;}
+      var div_code = "";
+      if (divisi) {
+        div_code = divisi;
+      }
+      var dept_code = "";
+      if (dept) {
+        dept_code = dept;
+      }
+      var status_karyawan = "";
+      if (statuskaryawan) {
+        status_karyawan = statuskaryawan;
+      }
+      var unit_perusahaan_code = "";
+      if (unit_perusahaan) {
+        unit_perusahaan_code = unit_perusahaan;
+      }
       try {
-        const response = await axios.get(this.BaseUrlGet + "GetAllEmployee?divisi_code="+div_code+'&department_code='+dept_code
-        +'&status='+status_karyawan+'&unit_perusahaan_code='+unit_perusahaan_code, {
-          headers: {
-            Authorization: `Bearer ` + this.authtoken,
-          },
-        });
+        const response = await axios.get(
+          this.BaseUrlGet +
+            "GetAllEmployee?divisi_code=" +
+            div_code +
+            "&department_code=" +
+            dept_code +
+            "&status=" +
+            status_karyawan +
+            "&unit_perusahaan_code=" +
+            unit_perusahaan_code,
+          {
+            headers: {
+              Authorization: `Bearer ` + this.authtoken,
+            },
+          }
+        );
         console.log(response.data.data.result.data);
         if (response.data.length != 0) {
           this.dataobject = response.data.data.result.data;
@@ -377,7 +393,7 @@ export default {
         console.log(response.data.data.result.data);
         if (response.data.length != 0) {
           this.itemsdivisi = response.data.data.result.data;
-         } else {
+        } else {
           console.log("Kosong");
           this.itemsdivisi = [];
         }
@@ -392,18 +408,23 @@ export default {
       }
     },
     async getDept(val) {
-      var div_code = ""
-      if(val){div_code=val;}
+      var div_code = "";
+      if (val) {
+        div_code = val;
+      }
       try {
-        const response = await axios.get(this.BaseUrlGet + "GetAllDepartment?divisi_code="+div_code, {
-          headers: {
-            Authorization: `Bearer ` + this.authtoken,
-          },
-        });
+        const response = await axios.get(
+          this.BaseUrlGet + "GetAllDepartment?divisi_code=" + div_code,
+          {
+            headers: {
+              Authorization: `Bearer ` + this.authtoken,
+            },
+          }
+        );
         console.log(response.data.data.result.data);
         if (response.data.length != 0) {
           this.itemsdept = response.data.data.result.data;
-         } else {
+        } else {
           console.log("Kosong");
           this.itemsdept = [];
         }
@@ -419,15 +440,18 @@ export default {
     },
     async getUnitPerusahaan() {
       try {
-        const response = await axios.get(this.BaseUrlGet + "GetAllUnitPerusahaan", {
-          headers: {
-            Authorization: `Bearer ` + this.authtoken,
-          },
-        });
+        const response = await axios.get(
+          this.BaseUrlGet + "GetAllUnitPerusahaan",
+          {
+            headers: {
+              Authorization: `Bearer ` + this.authtoken,
+            },
+          }
+        );
         console.log(response.data.data.result.data);
         if (response.data.length != 0) {
           this.itemsunitperusahaan = response.data.data.result.data;
-          } else {
+        } else {
           console.log("Kosong");
           this.itemsunitperusahaan = [];
         }
@@ -443,15 +467,18 @@ export default {
     },
     async getStatusKaryawan() {
       try {
-        const response = await axios.get(this.BaseUrlGet + "GetAllStatusKaryawan", {
-          headers: {
-            Authorization: `Bearer ` + this.authtoken,
-          },
-        });
+        const response = await axios.get(
+          this.BaseUrlGet + "GetAllStatusKaryawan",
+          {
+            headers: {
+              Authorization: `Bearer ` + this.authtoken,
+            },
+          }
+        );
         console.log(response.data.data.result.data);
         if (response.data.length != 0) {
           this.itemsstatuskaryawan = response.data.data.result.data;
-          } else {
+        } else {
           console.log("Kosong");
           this.itemsstatuskaryawan = [];
         }
@@ -513,31 +540,36 @@ export default {
       this.dialogFilterEmp = true;
     },
 
-    selectedDivisi(val){
-      console.log(val)      
+    selectedDivisi(val) {
+      console.log(val);
       this.getDept(val);
     },
-    
-    cari(){
-      this.initialize(this.selectDivisi, this.selectDepartment, this.selectStatusKaryawan, this.selectUnitPerusahaan);
-      this.dialogFilterEmp = false;
-     },
 
-    detailItem(item) {      
+    cari() {
+      this.initialize(
+        this.selectDivisi,
+        this.selectDepartment,
+        this.selectStatusKaryawan,
+        this.selectUnitPerusahaan
+      );
+      this.dialogFilterEmp = false;
+    },
+
+    detailItem(item) {
       this.$router.push("/EmpDetail");
       localStorage.setItem("id_emp", item.id);
     },
-    addEmp() {      
+    addEmp() {
       this.$router.push("/EmpAddEdit");
       // localStorage.setItem("id_emp", item.id);
       localStorage.removeItem("id_emp");
-      localStorage.setItem("status", 'add_emp');
+      localStorage.setItem("status", "add_emp");
     },
-    editEmp(item) {      
+    editEmp(item) {
       this.$router.push("/EmpAddEdit");
       localStorage.setItem("id_emp", item.id);
       // localStorage.removeItem("id_emp");
-      localStorage.setItem("status", 'edit_emp');
+      localStorage.setItem("status", "edit_emp");
     },
     showDeleteModal(item) {
       this.dialogDelete = true;
