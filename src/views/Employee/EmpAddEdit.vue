@@ -32,7 +32,7 @@
                 label="Nomor Induk Karyawan"
                 outlined
                 dense
-                :rules="[(v) => !!v || 'Field is required']"
+                :rules="[(v) => !!v || 'Halaman harus di isi']"
               ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6">
@@ -45,7 +45,7 @@
                 clearable
                 outlined
                 dense
-                :rules="[(v) => !!v || 'Field is required']"
+                :rules="[(v) => !!v || 'Halaman harus di isi']"
               ></v-select>
             </v-col>
             <!-- <v-col
@@ -60,7 +60,7 @@
                             clearable
                             outlined
                             dense
-                            :rules="[(v) => !!v || 'Field is required']"
+                            :rules="[(v) => !!v || 'Halaman harus di isi']"
                             required
                         ></v-select>
                     </v-col> -->
@@ -76,7 +76,7 @@
                 clearable
                 outlined
                 dense
-                :rules="[(v) => !!v || 'Field is required']"
+                :rules="[(v) => !!v || 'Halaman harus di isi']"
               ></v-select>
             </v-col>
             <v-col cols="12" sm="6">
@@ -89,7 +89,7 @@
                 clearable
                 outlined
                 dense
-                :rules="[(v) => !!v || 'Field is required']"
+                :rules="[(v) => !!v || 'Halaman harus di isi']"
               ></v-select>
             </v-col>
             <v-col cols="12" sm="6">
@@ -98,7 +98,7 @@
                 label="Jabatan"
                 outlined
                 dense
-                :rules="[(v) => !!v || 'Field is required']"
+                :rules="[(v) => !!v || 'Halaman harus di isi']"
               ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6">
@@ -107,7 +107,7 @@
                 label="Pangkat"
                 outlined
                 dense
-                :rules="[(v) => !!v || 'Field is required']"
+                :rules="[(v) => !!v || 'Halaman harus di isi']"
               ></v-text-field>
             </v-col>
           </v-row>
@@ -125,7 +125,7 @@
                 label="Nama Lengkap"
                 outlined
                 dense
-                :rules="[(v) => !!v || 'Field is required']"
+                :rules="[(v) => !!v || 'Halaman harus di isi']"
               ></v-text-field>
             </v-col>
             <v-col cols="12" sm="6">
@@ -134,7 +134,7 @@
                 label="No Ktp"
                 outlined
                 dense
-                :rules="[(v) => !!v || 'Field is required']"
+                :rules="[(v) => !!v || 'Halaman harus di isi']"
               ></v-text-field>
             </v-col>
             <v-col cols="12" sm="4">
@@ -161,7 +161,7 @@
                     readonly
                     v-bind="attrs"
                     v-on="on"
-                    :rules="[(v) => !!v || 'Field is required']"
+                    :rules="[(v) => !!v || 'Halaman harus di isi']"
                   ></v-text-field>
                 </template>
                 <v-date-picker
@@ -404,7 +404,7 @@
                                       v-bind="attrs"
                                       v-on="on"
                                       :rules="[
-                                        (v) => !!v || 'Field is required',
+                                        (v) => !!v || 'Halaman harus di isi',
                                       ]"
                                     ></v-text-field>
                                   </template>
@@ -506,7 +506,7 @@
                     dense
                     v-bind="attrs"
                     v-on="on"
-                    :rules="[(v) => !!v || 'Field is required']"
+                    :rules="[(v) => !!v || 'Halaman harus di isi']"
                   ></v-text-field>
                 </template>
                 <v-date-picker
@@ -538,7 +538,7 @@
                     dense
                     v-bind="attrs"
                     v-on="on"
-                    :rules="[(v) => !!v || 'Field is required']"
+                    :rules="[(v) => !!v || 'Halaman harus di isi']"
                   ></v-text-field>
                 </template>
                 <v-date-picker
@@ -618,7 +618,7 @@
                                       v-bind="attrs"
                                       v-on="on"
                                       :rules="[
-                                        (v) => !!v || 'Field is required',
+                                        (v) => !!v || 'Halaman harus di isi',
                                       ]"
                                     ></v-text-field>
                                   </template>
