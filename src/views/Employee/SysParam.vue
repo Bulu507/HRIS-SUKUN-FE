@@ -53,7 +53,7 @@
                       @click="showAddModalDivisi()"
                       color="#25695c"
                     >
-                      <v-icon small>mdi-plus</v-icon> Add Item
+                      <v-icon small>mdi-plus</v-icon> Tambah Item
                     </v-btn>
                     <!-- Modal Add Edit -->
                     <v-dialog v-model="dialog" max-width="800px"> </v-dialog>
@@ -117,7 +117,7 @@
                       @click="showAddModalDept()"
                       color="#25695c"
                     >
-                      <v-icon small>mdi-plus</v-icon> Add Item
+                      <v-icon small>mdi-plus</v-icon> Tambah Item
                     </v-btn>
                     <!-- Modal Add Edit -->
                     <v-dialog v-model="dialog" max-width="800px"> </v-dialog>
@@ -324,7 +324,7 @@ export default {
       },
     },
     loading: false,
-    formTitle: "Add Item",
+    formTitle: "Tambah Item",
     value: "add",
     dialogDivisi: false,
     dialogDivisiDelete: false,
@@ -640,7 +640,7 @@ export default {
     showAddModalDivisi() {
       this.defaultItem.divisi_code = "";
       this.defaultItem.nama = "";
-      this.formTitle = "Add Item";
+      this.formTitle = "Tambah Item";
       // console.log();
       this.AddModal = true;
       this.dialogDivisi = true;
@@ -662,7 +662,7 @@ export default {
       this.defaultItem.nama = "";
       this.defaultItem.department_code = "";
       this.defaultItem.dept_nama = "";
-      this.formTitle = "Add Item";
+      this.formTitle = "Tambah Item";
       // console.log();
       this.AddModal = true;
       this.dialogDept = true;
